@@ -12,12 +12,11 @@ document.getElementById('addMemoryBtn').addEventListener('click', () => {
     const fileInput = document.getElementById('memoryImage');
     if (!text) return alert("Inserisci un testo per il ricordo.");
 
+    const bottomBar = document.getElementById('bottom-bar');
+    const bottomBarHeight = bottomBar.offsetHeight;
     const x = Math.random() * canvas.width;
-    const y = Math.random() * canvas.height;
+    const y = Math.random() * (canvas.height - bottomBarHeight);
     memories.push({ text, x, y, image: null });
-
-    const hue = Math.random() * 60 + 200; // blue-white range
-    ctx.fillStyle = `hsl(${hue}, 100%, 85%)`;
 
     // Draw Star
     ctx.fillStyle = "#fff";
