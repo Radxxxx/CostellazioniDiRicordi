@@ -1,14 +1,12 @@
 const canvas = document.getElementById('sky');
 const ctx = canvas.getContext('2d');
 
-// Canvas Dimentions
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Memories placeholder
 let memories = [];
 
-// Add Memory
+// Aggiungi ricordo
 document.getElementById('addMemoryBtn').addEventListener('click', () => {
     const text = document.getElementById('memoryText').value;
     const fileInput = document.getElementById('memoryImage');
@@ -18,18 +16,25 @@ document.getElementById('addMemoryBtn').addEventListener('click', () => {
     const y = Math.random() * canvas.height;
     memories.push({ text, x, y, image: null });
 
-    // Draw A Star
+    // Disegna stella
     ctx.fillStyle = "#fff";
     ctx.beginPath();
     ctx.arc(x, y, 5, 0, 2 * Math.PI);
     ctx.fill();
 
-    // Reset Form
+    // Reset form
     document.getElementById('memoryText').value = '';
     fileInput.value = '';
 });
 
-// Export PNG
+// Enter key submits memory
+document.getElementById('memoryText').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        document.getElementById('addMemoryBtn').click();
+    }
+});
+
+// Esporta costellazione come PNG
 document.getElementById('exportBtn').addEventListener('click', () => {
     const image = canvas.toDataURL('image/png');
     const link = document.createElement('a');

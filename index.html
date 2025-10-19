@@ -1,25 +1,22 @@
 <!DOCTYPE html>
-
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Costellazioni di Ricordi</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Costellazioni dei Ricordi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <body>
-        <canvas id = "sky"></canvas>
+    <canvas id="sky"></canvas>
 
-        <div id = "controls">
-            <h2>Aggiungi un Ricordo</h2>
-            <input type="text" id="memoryText" placeholder="Testo del ricordo">
-            <input type="file" id="memoryImage" accept="image/*">
-            <div class = "buttons"></div>
-                <button id="addMemoryBtn">Aggiungi</button>
-                <button id="exportBtn">Esporta Costellazione</button>
-            </div>
-        </div>
+    <div id="bottom-bar">
+        <label for="memoryImage" id="addImageBtn">+</label>
+        <input type="file" id="memoryImage" accept="image/*">
+        <input type="text" id="memoryText" placeholder="Scrivi un ricordo...">
+        <button id="addMemoryBtn">Invia</button>
+        <button id="exportBtn">Esporta</button>
+    </div>
 
-          <script src="script.js"></script>
-    </body>
+    <script src="script.js"></script>
+</body>
 </html>

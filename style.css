@@ -12,51 +12,68 @@ body {
     background: radial-gradient(ellipse at bottom, #000010 0%, #000 100%);
 }
 
-/* Glass panel centered */
-#controls {
-    position: absolute;
-    top: 50%;
+/* Bottom glass input bar */
+#bottom-bar {
+    position: fixed;
+    bottom: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 350px;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(15px);
-    color: #fff;
-    text-align: center;
+    width: calc(100% - 40px);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    transform: translateX(-50%);
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.5);
 }
 
-#controls h2 {
-    margin-bottom: 20px;
-    font-weight: 500;
-}
-
-input[type="text"], input[type="file"] {
-    width: 80%;
-    margin: 10px 0;
-    padding: 12px;
+#bottom-bar input[type="text"] {
+    flex: 1;
+    padding: 12px 16px;
     border-radius: 12px;
     border: none;
     outline: none;
     background: rgba(255, 255, 255, 0.15);
     color: #fff;
-    backdrop-filter: blur(5px);
     font-size: 0.95em;
+    backdrop-filter: blur(5px);
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+#memoryImage {
+    display: none; /* hide default file input */
+}
+
+/* Plus button for image */
+#addImageBtn {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+    line-height: 40px;
     text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(5px);
 }
 
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+#addImageBtn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.1);
 }
 
+/* Buttons */
 button {
-    padding: 12px 20px;
+    padding: 12px 18px;
     border-radius: 12px;
     border: none;
     background: rgba(74, 144, 226, 0.7);
