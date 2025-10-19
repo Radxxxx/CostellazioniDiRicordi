@@ -6,7 +6,7 @@ canvas.height = window.innerHeight;
 
 let memories = [];
 
-// Aggiungi ricordo
+// Add Memory
 document.getElementById('addMemoryBtn').addEventListener('click', () => {
     const text = document.getElementById('memoryText').value;
     const fileInput = document.getElementById('memoryImage');
@@ -16,25 +16,30 @@ document.getElementById('addMemoryBtn').addEventListener('click', () => {
     const y = Math.random() * canvas.height;
     memories.push({ text, x, y, image: null });
 
-    // Disegna stella
+    const hue = Math.random() * 60 + 200; // blue-white range
+    ctx.fillStyle = `hsl(${hue}, 100%, 85%)`;
+
+    // Draw Star
     ctx.fillStyle = "#fff";
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = "#fff";
     ctx.beginPath();
     ctx.arc(x, y, 5, 0, 2 * Math.PI);
     ctx.fill();
 
-    // Reset form
+    // Reset Form
     document.getElementById('memoryText').value = '';
     fileInput.value = '';
 });
 
-// Enter key submits memory
+// Enter Key Submits Memory
 document.getElementById('memoryText').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
         document.getElementById('addMemoryBtn').click();
     }
 });
 
-// Esporta costellazione come PNG
+// Expot Constellation as PNG
 document.getElementById('exportBtn').addEventListener('click', () => {
     const image = canvas.toDataURL('image/png');
     const link = document.createElement('a');
