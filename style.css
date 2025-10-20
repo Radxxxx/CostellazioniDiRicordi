@@ -93,7 +93,7 @@ button:active {
 .tooltip {
   position: absolute;
   display: none;
-  max-width: 200px;
+  max-width: 250px;       /* limits width */
   padding: 10px;
   border-radius: 12px;
   backdrop-filter: blur(10px);
@@ -101,6 +101,11 @@ button:active {
   color: white;
   font-size: 14px;
   box-shadow: 0 0 10px rgba(255,255,255,0.3);
-  pointer-events: none; 
+  pointer-events: none;
   z-index: 10;
+
+  /* Wrapping and spacing */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
