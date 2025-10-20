@@ -46,3 +46,30 @@ document.getElementById('exportBtn').addEventListener('click', () => {
     link.download = 'costellazione.png';
     link.click();
 });
+
+const tooltip = document.getElementById("tooltip");
+
+canvas.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+
+    let found = false;
+
+    for (const memory of memories) {
+    const dx = mouseX - memory.x;
+    const dy = mouseY - memory.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < 10) {
+      found = true;
+      tooltip.style.display = 'block';
+      tooltip.style.left = `${event.clientX + 15}px`;
+      tooltip.style.top = `${event.clientY - 10}px`;
+      tooltip.innerHTML = `<p>${memory.text}</p>`;
+      break;
+    }
+  }
+
+  if (!found) tooltip.style.display = 'none';
+});
