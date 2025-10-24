@@ -33,6 +33,15 @@ function drawStar(x, y){
 
     console.log("Draw Star function Worked");
     }
+  
+
+function drawAllStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const mem of memories) {
+        drawStar(mem.x, mem.y);
+    }
+}
+
 
 // Add Memory
 document.getElementById('addMemoryBtn').addEventListener('click', () => {
