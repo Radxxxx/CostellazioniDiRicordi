@@ -8,6 +8,18 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas); // adjust when window resizes
 resizeCanvas(); // call once on page load
 
+// Prevent canvas resize when keyboard opens
+const inputs = document.querySelectorAll('#bottom-bar input, #bottom-bar textarea');
+
+inputs.forEach(input => {
+  input.addEventListener('focus', () => {
+    window.removeEventListener('resize', resizeCanvas);
+  });
+  input.addEventListener('blur', () => {
+    window.addEventListener('resize', resizeCanvas);
+  });
+});
+
 let memories = [];
 
  // Draw Star
