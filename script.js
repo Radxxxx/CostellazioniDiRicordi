@@ -1,12 +1,11 @@
 const canvas = document.getElementById('sky');
 const ctx = canvas.getContext('2d');
 
-function resizeCanvas() {
+function setupCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
-window.addEventListener('resize', resizeCanvas); // adjust when window resizes
-resizeCanvas(); // call once on page load
+setupCanvas(); // call once on page load
 
 // Prevent canvas resize when keyboard opens
 const inputs = document.querySelectorAll('#bottom-bar input, #bottom-bar textarea');
