@@ -1,8 +1,12 @@
 const canvas = document.getElementById('sky');
 const ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas); // adjust when window resizes
+resizeCanvas(); // call once on page load
 
 let memories = [];
 
