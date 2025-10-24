@@ -117,3 +117,38 @@ canvas.addEventListener('mousemove', (event) => {
   if (!found) tooltip.style.display = 'none';
 });
 
+canvas.addEventListener('click', (event) => {
+  const rect = canvas.getBoundingClientRect();
+  const touchX = event.clientX - rect.left;
+  const touchY = event.clientY - rect.top;
+
+  let found = false;
+
+  for (const memory of memories) {
+    const dx = touchX - memory.x;
+    const dy = touchY - memory.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < 15) {
+      found = true;
+      tooltip.style.display = 'block';
+      tooltip.innerHTML = `
+        <p>${memory.text}</p>
+        ${memory.image ? `<img src="${memory.image}" width="150" style="display:block;">` : ''}
+      `;
+
+      // Center tooltip on screen (mobile-friendly)
+      tooltip.style.left = '50%';
+      tooltip.style.top = '50%';
+      tooltip.style.transform = 'translate(-50%, -50%)';
+      tooltip.style.maxWidth = '80vw';
+      tooltip.style.textAlign = 'center';
+
+      break;
+    }
+  }
+
+  if (!found) {
+    tooltip.style.display = 'none';
+  }
+});
