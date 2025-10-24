@@ -156,3 +156,5 @@ canvas.addEventListener('click', (event) => {
     tooltip.style.display = 'none';
   }
 });
+
+document.querySelector('form').addEventListener('submit', e => e.preventDefault());
