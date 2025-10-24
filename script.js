@@ -12,10 +12,18 @@ const inputs = document.querySelectorAll('#bottom-bar input, #bottom-bar textare
 
 inputs.forEach(input => {
   input.addEventListener('focus', () => {
-    window.removeEventListener('resize', resizeCanvas);
+    // Freeze body height so layout doesn’t shift when keyboard appears
+    document.body.style.height = window.innerHeight + 'px';
+    document.body.style.overflow = 'hidden';
   });
+
   input.addEventListener('blur', () => {
-    window.addEventListener('resize', resizeCanvas);
+    // Restore normal scrolling and layout
+    document.body.style.height = '';
+    document.body.style.overflow = '';
+    // Re-setup canvas in case viewport changed
+    setTimeout(setupCanvas, 300);
+    drawAllStars();
   });
 });
 
