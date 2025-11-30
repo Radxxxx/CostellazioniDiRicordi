@@ -18,11 +18,8 @@ inputs.forEach(input => {
   });
 
   input.addEventListener('blur', () => {
-    // Restore normal scrolling and layout
     document.body.style.height = '';
     document.body.style.overflow = '';
-    // Re-setup canvas in case viewport changed
-    setTimeout(setupCanvas, 300);
     drawAllStars();
   });
 });
@@ -94,13 +91,51 @@ document.getElementById('memoryText').addEventListener('keydown', (e) => {
     }
 });
 
-// Expot Constellation as PNG
-document.getElementById('exportBtn').addEventListener('click', () => {
-    const image = canvas.toDataURL('image/png');
-    const link = document.createElement('a');
-    link.href = image;
-    link.download = 'costellazione.png';
-    link.click();
+// Expot Constellation as JSON
+document.getElementById('exportJsonBtn').addEventListener('click', () => {
+    const json = JSON.stringify(memories, null, 2);
+
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "constellation.json";
+    a.click();
+
+    URL.revokeObjectURL(url);
+});
+
+document.getElementById('importJsonBtn').addEventListener('click', () => {
+    document.getElementById('importJsonFile').click();
+});
+
+//Import JSON files
+document.getElementById('importJsonFile').addEventListener('change', function() {
+    const file = this.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+
+            if (!Array.isArray(data)) {
+                alert("Invalid JSON format.");
+                return;
+            }
+
+            memories = data;
+            drawAllStars();
+
+            alert("Constellation imported!");
+        } catch (err) {
+            alert("Error reading JSON file.");
+        }
+    };
+
+    reader.readAsText(file);
 });
 
 const tooltip = document.getElementById("tooltip");
