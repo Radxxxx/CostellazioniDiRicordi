@@ -3,8 +3,12 @@ Costellazioni di Ricordi 🌌
 
 Descrizione del progetto:
 
-Costellazioni dei Ricordi è un sito web interattivo che permette agli utenti di creare una mappa stellare personale dei propri ricordi. Ogni “stella” rappresenta un ricordo, contenente testo e, opzionalmente, un’immagine. L’utente può aggiungere ricordi liberamente, osservare la loro disposizione nello spazio virtuale e interagire con essi tramite hover o click.
+Costellazioni dei Ricordi è un sito web interattivo che permette agli utenti di creare una mappa stellare personale dei propri ricordi. 
+Ogni “stella” rappresenta un ricordo, contenente testo e, opzionalmente, un’immagine. L’utente può aggiungere ricordi liberamente, osservare la loro disposizione nello spazio virtuale e interagire con essi tramite hover o click.
+
+
 Obiettivi principali:
+
 Offrire un’esperienza immersiva e personalizzata di memorizzazione visiva dei ricordi.
 Garantire la massima privacy, senza login o salvataggio su server.
 Permettere l’esportazione e l’importazione dei ricordi in formato JSON per preservare i dati e continuare la costruzione della costellazione.
@@ -23,7 +27,10 @@ L’utente può visualizzare i dettagli del ricordo tramite hover o click.
 Privacy:
 
 Tutti i dati sono gestiti lato client, nessuna informazione viene inviata a server esterni. Solo chi possiede il file JSON può accedere ai ricordi.
+
+
 Documentazione Dettagliata – Costellazioni di Ricordi
+
 1. Struttura dei file
 index.html
 Contiene la struttura della pagina: canvas per le stelle, tooltip, barra inferiore per inserire ricordi e pulsanti di import/export JSON.
